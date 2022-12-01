@@ -1,13 +1,37 @@
-version: '2'
+version: '3'
 
 services:
   jellyfin:
     image: jellyfin/jellyfin:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - 8096:8096
     volumes:
       - ${JF_MEDIA}:/media
       - ${JF_CONFIG}:/config
       - ${JF_CACHE}:/cache
+  
+  transmission:
+    image: linuxserver/transmission
+    restart: unless-stopped
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    expose:
+      - 9091
 
+  flexget:
+    image: wiserain/flexget
+    restart: unless-stopped
+    ports:
+      - 5050:5050
+    environment:
+      - TZ=america/santiago
+      - TORRENT_PLUGIN=transmission
+      - FG_WEBUI_PASSWD=123456
+    volumes:
+      - ${FG_CONFIG}:/config
+      - ${FG_DOWNLOAD}:/downloads
+    links:
+      - transmission
