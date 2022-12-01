@@ -24,6 +24,9 @@ services:
       - TZ=America/Santiago
     expose:
       - 9091
+    volumes:
+      - ${TRN_CONFIG}:/config
+      - ${TORRENT_DOWNLOAD}:/downloads
 
   flexget:
     image: wiserain/flexget
@@ -36,6 +39,6 @@ services:
       - FG_WEBUI_PASSWD=123456
     volumes:
       - ${FG_CONFIG}:/config
-      - ${FG_DOWNLOAD}:/downloads
+      - ${TORRENT_DOWNLOAD}:/downloads
     links:
       - transmission
