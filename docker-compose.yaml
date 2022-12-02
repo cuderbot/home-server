@@ -45,6 +45,6 @@ services:
     volumes:
       - ./flexget:/config
       - ${TORRENT_STORAGE}:/downloads
-      - ${MEDIA_STORAGE}:/media
+      - ${MEDIA_STORAGE}:/storage
     links:
       - transmission
