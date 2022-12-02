@@ -27,7 +27,7 @@ services:
     volumes:
       - ${MEDIA_STORAGE}:/media
       - ${TRN_CONFIG}:/config
-      - ${TORRENT_DOWNLOAD}:/downloads
+      - ${TORRENT_STORAGE}:/downloads
 
   flexget:
     image: wiserain/flexget
@@ -40,6 +40,6 @@ services:
       - FG_WEBUI_PASSWD=123456
     volumes:
       - ${FG_CONFIG}:/config
-      - ${TORRENT_DOWNLOAD}:/downloads
+      - ${TORRENT_STORAGE}:/downloads
     links:
       - transmission
