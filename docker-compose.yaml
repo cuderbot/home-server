@@ -15,6 +15,7 @@ services:
 
   transmission:
     image: linuxserver/transmission
+    command: transmission-daemon -f -g /config
     restart: unless-stopped
     ports:
       - 9091:9091
@@ -25,7 +26,6 @@ services:
     environment:
       - TZ=America/Santiago
     volumes:
-      - ${MEDIA_STORAGE}:/media
       - ./transmission:/config
       - ${TORRENT_STORAGE}:/downloads
 
@@ -45,5 +45,6 @@ services:
     volumes:
       - ./flexget:/config
       - ${TORRENT_STORAGE}:/downloads
+      - ${MEDIA_STORAGE}:/media
     links:
       - transmission
