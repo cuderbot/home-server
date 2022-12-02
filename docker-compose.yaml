@@ -20,10 +20,10 @@ services:
       - 9091:9091
       - 51413:51413
       - 51413:51413/udp
-    environment:
-      - TZ=America/Santiago
     expose:
       - 9091
+    environment:
+      - TZ=America/Santiago
     volumes:
       - ${MEDIA_STORAGE}:/media
       - ${TRN_CONFIG}:/config
@@ -34,6 +34,8 @@ services:
     restart: unless-stopped
     ports:
       - 5050:5050
+    expose:
+      - 5050
     environment:
       - PUID=1001
       - PGID=1001
