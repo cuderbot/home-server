@@ -9,7 +9,7 @@ services:
     environment:
       - TZ=America/Santiago
     volumes:
-      - ${JF_MEDIA}:/media
+      - ${MEDIA_STORAGE}:/media
       - ${JF_CONFIG}:/config
       - ${JF_CACHE}:/cache
 
@@ -25,6 +25,7 @@ services:
     expose:
       - 9091
     volumes:
+      - ${MEDIA_STORAGE}:/media
       - ${TRN_CONFIG}:/config
       - ${TORRENT_DOWNLOAD}:/downloads
 
