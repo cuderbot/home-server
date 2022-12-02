@@ -10,35 +10,34 @@ schedules:
       minutes: 30
 
 templates:
-  # tv:
-  #   regexp:
-  #     reject:
-  #       - x265: { from: title }
-  #   series:
-  #     settings:
-  #       tv:
-  #         exact: yes
-  #         propers: 12 hours
-  #         quality: 1080p
-  #     tv:
-  #       - Homeland
-  #       - Luther
-  #       - Mr Robot
-  #       - Rick and Morty
-  #       - SEAL Team
-  #       - Sherlock
-  #       - Silicon Valley
-  #       - Suits
-  #       - The Flash
-  #       - The Good Fight
-  #       - Tosh.0
-  #       - True Detective
+  tv:
+    regexp:
+      reject:
+        - x265: { from: title }
+    series:
+      settings:
+        tv:
+          exact: yes
+          propers: 12 hours
+          quality: 1080p
+      tv:
+        - Homeland
+        - Mr Robot
+        - Rick and Morty
+        - SEAL Team
+        - Sherlock
+        - Silicon Valley
+        - Suits
+        - The Flash
+        - The Good Fight
+        - Tosh.0
+        - True Detective
 
-  #   transmission:
-  #     host: transmission
-  #     port: 9091
-  #     username: admin
-  #     password: "123456"
+    transmission:
+      host: transmission
+      port: 9091
+      username: admin
+      password: "123456"
   anime:
     series:
       - Bocchi the rock!
