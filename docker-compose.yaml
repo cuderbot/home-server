@@ -30,7 +30,7 @@ services:
       - ${TORRENT_STORAGE}:/downloads
 
   flexget:
-    image: wiserain/flexget
+    image: wiserain/flexget:3.3.4
     restart: unless-stopped
     ports:
       - 5050:5050
