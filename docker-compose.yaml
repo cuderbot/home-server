@@ -41,7 +41,7 @@ services:
       - PGID=1001
       - TZ=America/Santiago
       - TORRENT_PLUGIN=transmission
-      - FG_WEBUI_PASSWD=123456
+      - FG_WEBUI_PASSWD=${FG_PASS}
     volumes:
       - ./flexget:/config
       - ${TORRENT_STORAGE}:/downloads
