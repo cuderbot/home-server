@@ -10,11 +10,6 @@ schedules:
       minutes: 30
 
 templates:
-  transmission_config:
-    host: transmission
-    port: 9091
-    username: admin
-    password: "123456"
   tv:
     regexp:
       reject:
@@ -38,17 +33,24 @@ templates:
         - Tosh.0
         - True Detective
     transmission:
-      template: transmission_config
+      host: transmission
+      port: 9091
+      username: admin
+      password: "123456"
   anime:
-    accept:
-      - PuyaSubs!
+    regexp:
+      accept:
+        - PuyaSubs!
     series:
       - Bocchi the rock!
       - Chainsaw Man
       - Blue lock
 
     transmission:
-      template: transmission_config
+      host: transmission
+      port: 9091
+      username: admin
+      password: "123456"
 
 tasks:
   eztvrss:
