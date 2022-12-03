@@ -10,6 +10,11 @@ schedules:
       minutes: 30
 
 templates:
+  transmission_config:
+    host: transmission
+    port: 9091
+    username: admin
+    password: "123456"
   tv:
     regexp:
       reject:
@@ -34,21 +39,15 @@ templates:
         - True Detective
 
     transmission:
-      host: transmission
-      port: 9091
-      username: admin
-      password: "123456"
+      template: transmission_config
   anime:
     series:
       - Bocchi the rock!
       - Chainsaw Man
       - Blue lock
 
-    transmission:
-      host: transmission
-      port: 9091
-      username: admin
-      password: "123456"
+    tr  ansmission:
+      template: transmission_config
 
 tasks:
   eztvrss:
