@@ -26,6 +26,7 @@ services:
     environment:
       - TZ=America/Santiago
     volumes:
+      - ./transmission/config.json:/config/config.json
       - ${TRANSMISSION_CONFIG}:/config
       - ${TORRENT_STORAGE}:/downloads
 
@@ -43,6 +44,7 @@ services:
       - TORRENT_PLUGIN=transmission
       - FG_WEBUI_PASSWD=${FG_PASS}
     volumes:
+      - ./flexget/config.yml:/config/config.yml
       - ${FG_CONFIG}:/config
       - ${TORRENT_STORAGE}:/downloads
       - ${MEDIA_STORAGE}:/storage
