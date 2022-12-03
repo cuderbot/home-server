@@ -43,9 +43,7 @@ templates:
       accept:
         - PuyaSubs!
     series:
-      - Bocchi the rock!
       - Chainsaw Man
-      - Blue lock
 
     transmission:
       host: transmission
