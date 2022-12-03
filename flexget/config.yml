@@ -46,7 +46,7 @@ templates:
       - Chainsaw Man
       - Blue lock
 
-    tr  ansmission:
+    transmission:
       template: transmission_config
 
 tasks:
