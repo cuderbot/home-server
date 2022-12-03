@@ -38,6 +38,7 @@ templates:
       username: admin
       password: "123456"
   anime:
+    quality: 720p
     regexp:
       accept:
         - PuyaSubs!
