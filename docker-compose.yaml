@@ -44,6 +44,7 @@ services:
       - TORRENT_PLUGIN=transmission
       - FG_WEBUI_PASSWD=${FG_PASS}
     volumes:
+      - ./flexget/custom-cont-init.d/:/config/custom-cont-init.d/
       - ./flexget/config.yml:/config/config.yml
       - ${FG_CONFIG}:/config
       - ${TORRENT_STORAGE}:/downloads
