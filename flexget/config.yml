@@ -27,11 +27,7 @@ templates:
         - SEAL Team
         - Sherlock
         - Silicon Valley
-        - Suits
-        - The Flash
         - The Good Fight
-        - Tosh.0
-        - True Detective
         - Weak Hero Class 1
     transmission:
       host: transmission
@@ -41,6 +37,8 @@ templates:
   anime:
     quality: 720p
     series:
+      - Blue lock
+      - Bocchi the rock!
       - Chainsaw Man
 
     transmission:
