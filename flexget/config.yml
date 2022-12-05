@@ -32,6 +32,7 @@ templates:
         - The Good Fight
         - Tosh.0
         - True Detective
+        - Weak Hero Class 1
     transmission:
       host: transmission
       port: 9091
