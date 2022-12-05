@@ -92,20 +92,20 @@ tasks:
       on_output:
         for_entries: |
           mkdir -p "/storage/movies/{{ movie_name }} ({{ movie_year }})" && mv "{{ location }}" "/storage/movies/{{ movie_name }} ({{ movie_year }})/{{ movie_name }} ({{ movie_year }}){{ location | pathext }}"
-  remove_stale_torrents:
-    from_transmission:
-      host: transmission
-      port: 9091
-      username: admin
-      password: "123456"
-    disable: [seen, seen_info_hash]
-    if:
-      - transmission_progress == 100: accept
-      - not transmission_seed_ratio_ok: reject
-      - not transmission_idle_limit_ok: reject
-    transmission:
-      host: transmission
-      port: 9091
-      username: admin
-      password: "123456"
-      action: purge
+  # remove_stale_torrents:
+  #   from_transmission:
+  #     host: transmission
+  #     port: 9091
+  #     username: admin
+  #     password: "123456"
+  #   disable: [seen, seen_info_hash]
+  #   if:
+  #     - transmission_progress == 100: accept
+  #     - not transmission_seed_ratio_ok: reject
+  #     - not transmission_idle_limit_ok: reject
+  #   transmission:
+  #     host: transmission
+  #     port: 9091
+  #     username: admin
+  #     password: "123456"
+  #     action: purge
