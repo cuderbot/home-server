@@ -12,6 +12,7 @@ services:
       - ${MEDIA_STORAGE}:/media
       - ${JF_CONFIG}:/config
       - ${JF_CACHE}:/cache
+    network_mode: "host"
 
   transmission:
     image: linuxserver/transmission
