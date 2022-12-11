@@ -40,7 +40,10 @@ templates:
       - Blue lock
       - Bocchi the rock!
       - Chainsaw Man
-
+    regexp:
+      accept:
+        - [PuyaSubs!]: { from: title }
+        - [ESP-ENG]: { from: title }
     transmission:
       host: transmission
       port: 9091
