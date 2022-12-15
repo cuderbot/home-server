@@ -10,30 +10,30 @@ schedules:
       minutes: 30
 
 templates:
-  tv:
-    regexp:
-      reject:
-        - x265: { from: title }
-    series:
-      settings:
-        tv:
-          exact: yes
-          propers: 12 hours
-          quality: 1080p
-      tv:
-        - Homeland
-        - Mr Robot
-        - Rick and Morty
-        - SEAL Team
-        - Sherlock
-        - Silicon Valley
-        - The Good Fight
-        - Weak Hero Class 1
-    transmission:
-      host: transmission
-      port: 9091
-      username: admin
-      password: "123456"
+  # tv:
+  #   regexp:
+  #     reject:
+  #       - x265: { from: title }
+  #   series:
+  #     settings:
+  #       tv:
+  #         exact: yes
+  #         propers: 12 hours
+  #         quality: 1080p
+  #     tv:
+  #       - Homeland
+  #       - Mr Robot
+  #       - Rick and Morty
+  #       - SEAL Team
+  #       - Sherlock
+  #       - Silicon Valley
+  #       - The Good Fight
+  #       - Weak Hero Class 1
+  #   transmission:
+  #     host: transmission
+  #     port: 9091
+  #     username: admin
+  #     password: "123456"
   anime:
     quality: 720p
     series:
@@ -54,14 +54,17 @@ tasks:
   eztvrss:
     rss: https://eztv.ag/ezrss.xml
     priority: 1
+    no_entries_ok: yes
     template: tv
   nyaa:
     rss: https://nyaa.si/?page=rss
-    priority: 1
-    template: anime
-  nyaa_search_puyaSubs:
-    search_rss: https://nyaa.si/?page=rss&q=%5BpuyaSubs%21%5D+{{search_term}}
     priority: 2
+    no_entries_ok: yes
+    template: anime
+  nyaa_puyasubs_subs:
+    rss: https://nyaa.si/?page=rss&q=puyasubs%21&c=0_0&f=0
+    no_entries_ok: yes
+    priority: 1
     template: anime
   sort_anime:
     priority: 2
@@ -82,21 +85,21 @@ tasks:
       on_output:
         for_entries: |
           mkdir -p "/storage/anime/{{ tvdb_series_name }}/Season {{ series_season }}" && mv "{{ location }}" "/storage/anime/{{ tvdb_series_name }}/Season {{ series_season }}/{{ tvdb_series_name }} - {{ series_id }}{{ location | pathext }}"
-  sort_movies:
-    priority: 2
-    no_entries_ok: yes
-    filesystem:
-      path: /downloads/complete
-      regexp: '.*\.(avi|mkv|mp4)$'
-      recursive: yes
-    accept_all: yes
-    require_field: movie_name
-    tmdb_lookup: yes
-    exec:
-      auto_escape: yes
-      on_output:
-        for_entries: |
-          mkdir -p "/storage/movies/{{ movie_name }} ({{ movie_year }})" && mv "{{ location }}" "/storage/movies/{{ movie_name }} ({{ movie_year }})/{{ movie_name }} ({{ movie_year }}){{ location | pathext }}"
+  # sort_movies:
+  #   priority: 2
+  #   no_entries_ok: yes
+  #   filesystem:
+  #     path: /downloads/complete
+  #     regexp: '.*\.(avi|mkv|mp4)$'
+  #     recursive: yes
+  #   accept_all: yes
+  #   require_field: movie_name
+  #   tmdb_lookup: yes
+  #   exec:
+  #     auto_escape: yes
+  #     on_output:
+  #       for_entries: |
+  #         mkdir -p "/storage/movies/{{ movie_name }} ({{ movie_year }})" && mv "{{ location }}" "/storage/movies/{{ movie_name }} ({{ movie_year }})/{{ movie_name }} ({{ movie_year }}){{ location | pathext }}"
   # remove_stale_torrents:
   #   from_transmission:
   #     host: transmission
