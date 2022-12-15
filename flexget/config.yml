@@ -40,10 +40,10 @@ templates:
       - Blue lock
       - Bocchi the rock!
       - Chainsaw Man
+      - Do it Yourself!
     regexp:
       accept:
         - PuyaSubs: { from: title }
-        - ESP-ENG: { from: title }
     transmission:
       host: transmission
       port: 9091
@@ -58,6 +58,10 @@ tasks:
   nyaa:
     rss: https://nyaa.si/?page=rss
     priority: 1
+    template: anime
+  nyaa_search_puyaSubs:
+    search_rss: https://nyaa.si/?page=rss&q=%5BpuyaSubs%21%5D+{{search_term}}
+    priority: 2
     template: anime
   sort_anime:
     priority: 2
