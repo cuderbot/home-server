@@ -14,28 +14,21 @@ schedules:
 templates:
   anime:
     quality: 720p
-    series:
-      - Blue lock
-      - Bocchi the rock!
-      - Chainsaw Man
-      - Do it Yourself!
-    transmission:
-      host: "{? transmission.host ?}"
-      port: "{? transmission.port ?}"
-      username: "{? transmission.username ?}"
-      password: "{? transmission.password ?}"
+    include: anime.yml
+  transmission:
+    host: "{? transmission.host ?}"
+    port: "{? transmission.port ?}"
+    username: "{? transmission.username ?}"
+    password: "{? transmission.password ?}"
 
 tasks:
-  eztvrss:
-    rss: https://eztv.ag/ezrss.xml
-    priority: 1
-    no_entries_ok: yes
-    template: tv
   nyaa_puyasubs_subs:
     rss: https://nyaa.si/?page=rss&q=puyasubs%21&c=0_0&f=0
     no_entries_ok: yes
     priority: 1
-    template: anime
+    template:
+      - anime
+      - transmission
   sort_anime:
     priority: 2
     no_entries_ok: yes
