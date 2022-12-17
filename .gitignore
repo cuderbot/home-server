@@ -1,2 +1,3 @@
 .env
 flexget/secrets.yml
+flexget/anime.yml
