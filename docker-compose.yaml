@@ -33,7 +33,7 @@ services:
 
   flexget:
     image: wiserain/flexget:3.3.4
-    restart: unless-stopped
+    restart: on-failure:2
     ports:
       - 5050:5050
     expose:
