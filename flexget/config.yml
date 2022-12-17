@@ -19,9 +19,6 @@ templates:
       - Bocchi the rock!
       - Chainsaw Man
       - Do it Yourself!
-    regexp:
-      accept:
-        - PuyaSubs: { from: title }
     transmission:
       host: "{? transmission.host ?}"
       port: "{? transmission.port ?}"
@@ -34,11 +31,6 @@ tasks:
     priority: 1
     no_entries_ok: yes
     template: tv
-  nyaa:
-    rss: https://nyaa.si/?page=rss
-    priority: 2
-    no_entries_ok: yes
-    template: anime
   nyaa_puyasubs_subs:
     rss: https://nyaa.si/?page=rss&q=puyasubs%21&c=0_0&f=0
     no_entries_ok: yes
@@ -62,7 +54,7 @@ tasks:
       auto_escape: yes
       on_output:
         for_entries: |
-          mkdir -p "/storage/anime/{{ tvdb_series_name }}/Season {{ series_season }}" && mv "{{ location }}" "/storage/anime/{{ tvdb_series_name }}/Season {{ series_season }}/{{ tvdb_series_name }} - {{ series_id }}{{ location | pathext }}"
+          mkdir -p "/storage/anime/{{ tvdb_series_name }}/season-{{ series_season }}" && mv "{{ location }}" "/storage/anime/{{ tvdb_series_name }}/season-{{ series_season }}/{{ tvdb_series_name }}-{{ series_id }}{{ location | pathext }}"
   # remove_stale_torrents:
   #   from_transmission:
   #     host: "{? transmission.host ?}"
