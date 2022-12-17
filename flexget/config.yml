@@ -15,11 +15,12 @@ templates:
   anime:
     quality: 720p
     include: anime.yml
-  transmission:
-    host: "{? transmission.host ?}"
-    port: "{? transmission.port ?}"
-    username: "{? transmission.username ?}"
-    password: "{? transmission.password ?}"
+  transmission-settings:
+    transmission:
+      host: "{? transmission.host ?}"
+      port: "{? transmission.port ?}"
+      username: "{? transmission.username ?}"
+      password: "{? transmission.password ?}"
 
 tasks:
   nyaa_puyasubs_subs:
@@ -28,7 +29,7 @@ tasks:
     priority: 1
     template:
       - anime
-      - transmission
+      - transmission-settings
   sort_anime:
     priority: 2
     no_entries_ok: yes
