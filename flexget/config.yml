@@ -39,7 +39,7 @@ tasks:
       regexp: '.*\.(avi|mkv|mp4)$'
       recursive: yes
     accept_all: yes
-    thetvdb_lookup: yes
+    imdb_lookup: yes
     require_field: series_name
     all_series:
       parse_only: yes
@@ -47,7 +47,7 @@ tasks:
       auto_escape: yes
       on_output:
         for_entries: |
-          mkdir -p "/storage/anime/{{ tvdb_series_name }}/season-{{ series_season }}" && mv "{{ location }}" "/storage/anime/{{ tvdb_series_name }}/season-{{ series_season }}/{{ tvdb_series_name }}-{{ series_id }}{{ location | pathext }}"
+          mkdir -p "/storage/anime/{{ imdb_name }}" && mv "{{ location }}" "/storage/anime/{{ imdb_name }}/{{ imdb_name }}-{{ imdb_id }}{{ location | pathext }}"
   # remove_stale_torrents:
   #   from_transmission:
   #     host: "{? transmission.host ?}"
