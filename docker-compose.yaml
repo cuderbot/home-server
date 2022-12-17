@@ -47,6 +47,8 @@ services:
     volumes:
       - ./flexget/custom-cont-init.d/:/config/custom-cont-init.d/
       - ./flexget/config.yml:/config/config.yml
+      - ./flexget/secrets.yml:/config/secrets.yml
+      - ./flexget/anime.yml:/config/anime.yml
       - ${FG_CONFIG}:/config
       - ${TORRENT_STORAGE}:/downloads
       - ${MEDIA_STORAGE}:/storage
