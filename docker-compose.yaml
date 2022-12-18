@@ -4,8 +4,6 @@ services:
   jellyfin:
     image: jellyfin/jellyfin:latest
     restart: unless-stopped
-    # ports:
-    #   - 8096:8096
     environment:
       - TZ=America/Santiago
     volumes:
@@ -54,12 +52,3 @@ services:
       - ${MEDIA_STORAGE}:/storage
     links:
       - transmission
-# networks:
-#   lan:
-#     driver: macvlan
-#     driver_opts:
-#       parent: eth0
-#     ipam:
-#       config:
-#         - subnet: "192.168.100.129/24"
-#           gateway: "192.168.100.1"
