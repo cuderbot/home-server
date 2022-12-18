@@ -23,32 +23,40 @@ templates:
       password: "{? transmission.password ?}"
 
 tasks:
-  nyaa_puyasubs_subs:
-    rss: https://nyaa.si/?page=rss&q=puyasubs%21&c=0_0&f=0
-    no_entries_ok: yes
+  rss-nyaa-pubsubs:
+    rss: https://nyaa.si/?page=rss&c=0_0&f=0&q=puyasubs%21
     priority: 1
+    no_entries_ok: yes
     template:
       - anime
       - transmission-settings
-  sort_anime:
+  move-anime:
     priority: 2
     no_entries_ok: yes
     parsing:
       series: guessit
     filesystem:
       path: /downloads/complete
-      regexp: '.*\.(avi|mkv|mp4)$'
       recursive: yes
     accept_all: yes
     imdb_lookup: yes
     require_field: series_name
     all_series:
       parse_only: yes
-    exec:
-      auto_escape: yes
-      on_output:
-        for_entries: |
-          mkdir -p "/storage/anime/{{ imdb_name }}" && mv "{{ location }}" "/storage/anime/{{ imdb_name }}/{{ imdb_name }}-{{ imdb_id }}{{ location | pathext }}"
+    move:
+      to: "/storage/anime/{{imdb_name}}"
+      rename: "{{imdb_name}}-{{imdb}}{{ location|pathext }}"
+      along:
+        extensions:
+          - sub
+          - srt
+        subdirs:
+          - Subs
+    # exec:
+    #   auto_escape: yes
+    #   on_output:
+    #     for_entries: |
+    #       mkdir -p "/storage/anime/{{ imdb_name }}" && mv "{{ location }}" "/storage/anime/{{ imdb_name }}/{{ imdb_name }}-{{ imdb_id }}{{ location | pathext }}"
   # remove_stale_torrents:
   #   from_transmission:
   #     host: "{? transmission.host ?}"
