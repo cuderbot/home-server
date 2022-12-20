@@ -61,8 +61,6 @@ services:
       - TZ=Asia/Tashkent
     ports:
       - 5055:5055
-    volumes:
-      - /path/to/appdata/config:/app/config
     restart: unless-stopped
     links:
       - jellyfin
